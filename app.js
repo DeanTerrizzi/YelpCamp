@@ -34,18 +34,6 @@ var Campground = mongoose.model("Campground", campgroundSchema);
 //         }
 //     });
 
-// var campgrounds = [
-//     {name: "Salmon Creek", image: "https://cdn.pixabay.com/photo/2017/09/26/13/50/rv-2788677_960_720.jpg"},
-//     {name: "Granite Hill", image: "https://cdn.pixabay.com/photo/2018/05/16/15/49/camper-3406137_960_720.jpg"},
-//     {name: "Mountain Goat's Rest", image: "https://cdn.pixabay.com/photo/2016/01/26/23/32/camp-1163419_960_720.jpg"},
-//     {name: "Salmon Creek", image: "https://cdn.pixabay.com/photo/2017/09/26/13/50/rv-2788677_960_720.jpg"},
-//     {name: "Granite Hill", image: "https://cdn.pixabay.com/photo/2018/05/16/15/49/camper-3406137_960_720.jpg"},
-//     {name: "Mountain Goat's Rest", image: "https://cdn.pixabay.com/photo/2016/01/26/23/32/camp-1163419_960_720.jpg"},
-//     {name: "Salmon Creek", image: "https://cdn.pixabay.com/photo/2017/09/26/13/50/rv-2788677_960_720.jpg"},
-//     {name: "Granite Hill", image: "https://cdn.pixabay.com/photo/2018/05/16/15/49/camper-3406137_960_720.jpg"},
-//     {name: "Mountain Goat's Rest", image: "https://cdn.pixabay.com/photo/2016/01/26/23/32/camp-1163419_960_720.jpg"}
-// ];
-
 app.get("/", function(req, res){
     res.render("landing");
 });
@@ -67,7 +55,7 @@ app.post("/campgrounds", function (req, res){
     //get data from form and add to campgrounds
     var name = req.body.name;
     var image = req.body.image;
-    var desc = rew.body.description;
+    var desc = req.body.description;
     var newCampground = {name: name, image: image, description: desc};
     //Create a new campground and save to DB
     Campground.create(newCampground, function(err, newlyCreated){
@@ -81,7 +69,7 @@ app.post("/campgrounds", function (req, res){
 });
 
 //NEW -show form to create new campground
-app.get("/campgrounds/new.", function(req, res){
+app.get("/campgrounds/new", function(req, res){
     res.render("new");
 });
 
